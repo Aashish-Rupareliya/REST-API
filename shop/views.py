@@ -6,8 +6,6 @@ from .models import Order
 from .serializers import OrderSerializer
 from .serializers import ProductSerializer, CustomerSerializer, OrderSerializer, OrderItemSerializer
 
-
-# Create your views here.
 from rest_framework import viewsets
 from .models import Customer
 from .serializers import CustomerSerializer

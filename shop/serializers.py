@@ -1,5 +1,3 @@
-# serializers.py
-
 from rest_framework import serializers
 from .models import Customer, Product, Order, OrderItem
 from django.utils import timezone
@@ -22,14 +20,14 @@ class ProductSerializer(serializers.ModelSerializer):
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
-        fields = ['product', 'quantity']  # Exclude 'order' field
+        fields = ['product', 'quantity']  
 
 class OrderSerializer(serializers.ModelSerializer):
-    order_items = OrderItemSerializer(many=True)  # Use 'order_items' as defined in the related_name
+    order_items = OrderItemSerializer(many=True)  
 
     class Meta:
         model = Order
-        fields = ['order_number', 'order_date', 'address', 'customer', 'order_items']  # Specify the order of fields
+        fields = ['order_number', 'order_date', 'address', 'customer', 'order_items']  
 
     def validate_order_date(self, value):
         if value < timezone.now().date():
